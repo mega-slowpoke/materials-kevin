@@ -27,23 +27,17 @@ Student create_student(int id, const char *name, float gpa) {
 void print_student(const Student *stu) {
     printf("ID: %d\n", stu->id);
     // TODO: 打印剩下的信息
-    printf("Name: %s\n", stu->name);
-    printf("GPA: %.2f\n", stu->gpa);
     printf("----------------------\n");
 }
 
 // 3️⃣ TODO:更新 GPA
 void update_gpa(Student *stu, float new_gpa) {
-    stu->gpa = new_gpa;
+    
 }
 
 //  TODO:比较两个学生 GPA，返回 GPA 更高的学生 id
 int compare_gpa(const Student *stu1, const Student *stu2) {
-    if (stu1->gpa >= stu2->gpa) {
-        return stu1->id;
-    } else {
-        return stu2->id;
-    }
+    
 }
 
 
