@@ -94,38 +94,46 @@ if (i == 0) {
 // 任何除了以上东西都代表true
 
 // 循环
-for (int i = 0; i < 10; i++) {
+// for (int i = 0; i < 10; i++) {
 
-}
+// }
 
-int x = 0
-while (x < 10)  {
-    ...
-    x++;
-}
+// int x = 0
+// while (x < 10)  {
+//     ...
+//     x++;
+// }
 
 
 // 指针
 // 计算机存储本质是一系列的地址与数据。
 // 本质上指针存的是另一个变量的内存地址。
 int x = 10;
+int y = 23;
+
+
 int *p = &x; 
+
 *p = 20;
 
 
 
 // 值传递 reference by value
+// C里面所有的东西都是值传递，没有引用传递
 void change(int p) {
     p = 100;
 }
 
 int main() {
-    int a = 5;
-    change(a);  
-    printf("%d\n", a);  // 输出多少呢？
+    // int a = 5;
+    // change(a);  
+    // printf("%d\n", a);  // 输出多少呢？
+
+
 }
 
 // 那Python呢？
 
 // 动态内存管理
+// 1. 初始化：随机的 -> 申请 -> 赋值 -> 释放
 
