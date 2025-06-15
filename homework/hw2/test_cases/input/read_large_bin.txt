@@ -1,0 +1,24 @@
+gradebook> read_bin econ1001.bin
+gradebook> class
+gradebook> print
+gradebook> lookup mvaneim
+gradebook> lookup dhdkifk
+gradebook> lookup vrkjnqe
+gradebook> lookup wloxjsn
+gradebook> lookup aodbxvf
+gradebook> lookup vgakhmr
+gradebook> lookup ukykyzo
+gradebook> lookup lgxoqpx
+gradebook> lookup rijeiax
+gradebook> lookup bdlvtlv
+gradebook> lookup yhxxrfu
+gradebook> lookup snlbnvl
+gradebook> lookup oywgphl
+gradebook> lookup helhbjf
+gradebook> lookup wqqnyen
+gradebook> lookup evslpmh
+gradebook> lookup tjnymsz
+gradebook> lookup uwtodyn
+gradebook> lookup yzcvvmv
+gradebook> lookup wbkqelc
+gradebook> exit

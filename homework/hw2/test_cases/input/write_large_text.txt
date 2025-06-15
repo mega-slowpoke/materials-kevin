@@ -1,0 +1,6 @@
+gradebook> read_bin econ1001.bin
+gradebook> write_text
+gradebook> clear
+gradebook> read_text econ1001.txt
+gradebook> print
+gradebook> exit
