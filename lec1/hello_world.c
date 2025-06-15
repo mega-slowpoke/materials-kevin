@@ -13,6 +13,7 @@
 // double   8字节
 // char     1字节
 // void     
+// 指针     4字节 （32位） / 8字节  
 
 // unsigned int / long / short
 
