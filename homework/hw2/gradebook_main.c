@@ -30,6 +30,9 @@ int main(int argc, char **argv) {
     printf("  exit:                   exits the program\n");
 
     char cmd[MAX_CMD_LEN];
+    char name[MAX_NAME_LEN];
+    int score;
+
     while (1) {
         printf("gradebook> ");
         if (scanf("%s", cmd) == EOF) {
@@ -54,10 +57,77 @@ int main(int argc, char **argv) {
             }
         }
 
+        else if (strcmp("class", cmd) == 0) {
+            if (book == NULL) {
+                printf("No such a gradebook");
+            } else {
+                printf("Class name: %s\n", get_gradebook_name(book));
+            }
+        }
 
-        // TODO Add cases for the other commands
-        // Read in the command and (possibly) additional arguments with scanf()
+        else if (strcmp("add", cmd) == 0) {
+            scanf("%s %d", name, &score);
+            if (book == NULL) {
+                printf("No such a gradebook\n");
+            } else if (add_score(book, name, score) != 0) {
+                printf("ERROR\n");
+            }
+        }
 
+        else if (strcmp("lookup", cmd) == 0) {
+            scanf("%s", name);
+            if (book == NULL) {
+                printf("No such a gradebook\n");
+            } else {
+                int found = find_score(book, name);
+                if (found == -1) {
+                    printf("No such a person\n");
+                } else {
+                    printf("%s: %d\n", name, found);
+                }
+            }
+        }
+
+        else if (strcmp("clear", cmd) == 0) {
+            if (book == NULL) {
+                printf("No such a gradebook\n");
+            } else {
+                free_gradebook(book);
+                book = NULL;
+                printf("Gradebook cleared\n");
+            }
+        }
+
+        else if (strcmp("print", cmd) == 0) {
+            if (book == NULL) {
+                printf("No such a gradebook\n");
+            } else {
+                print_gradebook(book);
+            }
+        }
+
+        else if (strcmp("write_text", cmd) == 0) {
+            if (book == NULL) {
+                printf("No such a gradebook\n");
+            } else if (write_gradebook_to_text(book) != 0) {
+                printf("Write gradebook failed\n");
+            } else {
+                printf("Gradebook written to file\n");
+            }
+        }
+
+        else if (strcmp("read_text", cmd) == 0) {
+            scanf("%s", name);
+            if (book != NULL) {
+                printf("Error: You already have a gradebook.\n");
+                printf("Use 'clear' to remove the current one first.\n");
+            } else {
+                book = read_gradebook_from_text(name);
+                if (book == NULL) {
+                    printf("Failed to read gradebook from file.\n");
+                }
+            }
+        }
 
         else {
             printf("Unknown command %s\n", cmd);
