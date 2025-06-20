@@ -1,0 +1,5 @@
+1.为什么const char* get_gradebook_name(const gradebook_t* book)括号里也要“const”？
+2.unsigned类型是什么
+3.hash(name)怎么锁定哈希桶的？
+4.else if (strcmp("read_text", cmd) == 0)这段逻辑理解不清楚。
+5.scanf怎么能读取到第二个词？
