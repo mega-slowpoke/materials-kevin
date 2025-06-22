@@ -1,0 +1,27 @@
+===========================================================================================
+== Test 25: Non-Existent Text File
+== Attempts to read from a gradebook text file that does not exist.
+Running test...
+Expected output is in file 'test_results/raw/project_1-25-expected.tmp'
+Actual output is in file 'test_results/raw/project_1-25-actual.tmp'
+Test FAILED
+== Side-by-Side Comparison ==
+== Differing lines have a character like '|' '>' or '<' in the middle
+==== EXPECT ====                                                     ==== ACTUAL ====
+Gradebook System                                                     Gradebook System
+Commands:                                                            Commands:
+  create <name>:          creates a new class with specified name      create <name>:          creates a new class with specified name
+  class:                  shows the name of the class                  class:                  shows the name of the class
+  add <name> <score>:     adds a new score                             add <name> <score>:     adds a new score
+  lookup <name>:          searches for a score by student name         lookup <name>:          searches for a score by student name
+  clear:                  resets current gradebook                     clear:                  resets current gradebook
+  print:                  shows all scores, sorted by student name     print:                  shows all scores, sorted by student name
+  write_text:             saves all scores to text file                write_text:             saves all scores to text file
+  read_text <file_name>:  loads scores from text file                  read_text <file_name>:  loads scores from text file
+  exit:                   exits the program                            exit:                   exits the program
+gradebook> read_text nothing.txt                                     gradebook> read_text nothing.txt
+Failed to read gradebook from text file                            | Failed to read gradebook from file.
+gradebook> exit                                                      gradebook> exit
+== Line Differences ==
+EXPECT 13) Failed to read gradebook from text file
+ACTUAL 13) Failed to read gradebook from file.

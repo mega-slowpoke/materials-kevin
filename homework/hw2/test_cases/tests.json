@@ -167,30 +167,6 @@
             "input_file": "test_cases/input/invalid_text_read.txt"
         },
         {
-            "name": "Non-Existent Binary File",
-            "description": "Attempts to read from a gradebook text file that does not exist.",
-            "output_file": "test_cases/output/non_existent_bin.txt",
-            "input_file": "test_cases/input/non_existent_bin.txt"
-        },
-        {
-            "name": "Binary File Persistence",
-            "description": "Creates a new gradebook with a small number of scores, then writes the gradebook to a binary file. Clears, then reads in that file to ensure that an identical gradebook is recovered from the saved data.",
-            "output_file": "test_cases/output/bin_file_persistence.txt",
-            "input_file": "test_cases/input/bin_file_persistence.txt"
-        },
-        {
-            "name": "Invalid Read from Binary File",
-            "description": "Attempts to read in a new gradebook from a binary file while there is still a currently active gradebook.",
-            "output_file": "test_cases/output/invalid_bin_read.txt",
-            "input_file": "test_cases/input/invalid_bin_read.txt"
-        },
-        {
-            "name": "Text and Binary File Combination",
-            "description": "Creates a new gradebook, writes to a text file, clears and creates a second gradebook, writes to a binary file, clears and loads in gradebook 1 from its text file, then clears and loads in gradebook 2 from its binary file.",
-            "output_file": "test_cases/output/text_bin_combo.txt",
-            "input_file": "test_cases/input/text_bin_combo.txt"
-        },
-        {
             "name": "Read Large Gradebook from Text File",
             "description": "Reads in a previously created file to ensure that the gradebook system is able to load in data from large text files.",
             "output_file": "test_cases/output/read_large_text.txt",
@@ -209,24 +185,11 @@
             "input_file": "test_cases/input/write_large_text.txt"
         },
         {
-            "name": "Write Large Gradebook to Binary File",
-            "description": "Reads in large gradebook from text file, then writes gradebook to a binary file. Reloads from the binary file and prints contents",
-            "output_file": "test_cases/output/write_large_bin.txt",
-            "input_file": "test_cases/input/write_large_bin.txt"
-        },
-        {
             "name": "Text File Command Line Argument",
             "description": "Read in a text file with the name specified from the command line",
             "command": "./gradebook_main arth1001.txt",
             "output_file": "test_cases/output/text_command_line.txt",
             "input_file": "test_cases/input/text_command_line.txt"
-        },
-        {
-            "name": "Binary File Command Line Argument",
-            "description": "Read in a binary file with the name specified from the command line",
-            "command": "./gradebook_main econ1001.bin",
-            "output_file": "test_cases/output/bin_command_line.txt",
-            "input_file": "test_cases/input/bin_command_line.txt"
         },
         {
             "name": "Unknown File Type Command Line Argument",
