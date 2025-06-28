@@ -140,7 +140,8 @@ int addLast(MyLinkedList* lst, int val) {
         lst->tail = node;
     
     } else {
-        // 不是空链表
+    // 链表大小不为0
+    // 不是空链表
         ListNode* new_node = (ListNode*) malloc(sizeof(ListNode));
         new_node->val = val;
         
@@ -149,13 +150,6 @@ int addLast(MyLinkedList* lst, int val) {
 
         lst->tail = new_node;
     }
-
-
-    // 链表大小不为0
-
-
-   
-
 }
 
 // 1.分类讨论 （空链表，有元素？区别？）
