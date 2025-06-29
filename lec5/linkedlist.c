@@ -101,76 +101,180 @@ void delete_value(int arr[], int index);
 // 2. 对于单向链表，只能从上一个走到下一个，不能反过来
 
 
+
+// O(n)
+
 // 接口
 // get(int idx) ->  (arr[idx])    ll.get(idx) -> 返回链表索引为idx的元素
 // set(int idx, int val) -> (arr[idx] = val)  ll.set(idx, val) : 设置链表索引为idx的元素为val 
 // size() -> 想知道链表中多少个元素
+// addFront()
+// addLast()
+// removeFront()
+// removeLast()
+
+
+
 // addAtIndex(int idx, int val)
 // removeAtIndex(int idx)
 
-typedef struct MyLinkedList {
-    ListNode* head;
-    ListNode* tail;
-} MyLinkedList;
+// field
 
 typedef struct ListNode { 
     int val;
     struct ListNode *next;
-
 } ListNode;
 
+// dummy 哨兵节点，假的头节点，把所有的情况都归一成了middle的情况
+typedef struct MyLinkedList {
+    ListNode* dummy;
+    ListNode* head;
+    ListNode* tail;
+    int size;
+} MyLinkedList;
 
 
 MyLinkedList* myLinkedListCreate() {
     MyLinkedList* lst = (MyLinkedList*) malloc(sizeof(MyLinkedList));
     lst->head = NULL;
     lst->tail = NULL;
-
+    lst->size = 0;
     return lst;
 }
+
 
 int addLast(MyLinkedList* lst, int val) {
     // 链表大小为0
     // head = tail
-    if (lst->head == NULL) { 
-        ListNode* node = (ListNode*) malloc(sizeof(ListNode));
-        node->val = val;
-        node->next = NULL;
-        lst->head = node;
-        lst->tail = node;
-    
-    } else {
-    // 链表大小不为0
-    // 不是空链表
-        ListNode* new_node = (ListNode*) malloc(sizeof(ListNode));
-        new_node->val = val;
-        
-        ListNode* last_node = lst->tail;
-        last_node->next = new_node;
 
-        lst->tail = new_node;
+    ListNode* cur = lst->dummy;
+    while (cur->next != NULL) {
+        cur = cur->next;
     }
+    ListNode* new_node = (ListNode*) malloc(sizeof(ListNode));
+    cur = new_node;
+
+
+    // if (lst->head == NULL) { 
+    //     ListNode* node = (ListNode*) malloc(sizeof(ListNode));
+    //     node->val = val;
+    //     node->next = NULL;
+    //     lst->head = node;
+    //     lst->tail = node;
+    
+    // } else {
+    // // 链表大小不为0
+    // // 不是空链表
+    //     ListNode* new_node = (ListNode*) malloc(sizeof(ListNode));
+    //     new_node->val = val;
+        
+    //     ListNode* last_node = lst->tail;
+    //     last_node->next = new_node;
+
+    //     lst->tail = new_node;
+    // }
 }
 
 // 1.分类讨论 （空链表，有元素？区别？）
 // 2. 一步一步来，注意操作顺序 
 
+
+// O(n)
 int get(MyLinkedList* lst, int idx) {
-    
+    // idx out of range
+    if (idx < 0 || idx >= lst->size) {
+        return NULL;
+    }
+ 
+    int i = 0;
+    ListNode* cur = lst->head;
+
+    while (i < idx) {
+        cur = cur->next;
+        i++;
+    }
+
+    return cur->val;
 }
 
+// 如果成功，返回1，如果不成功，返回0
 int set(MyLinkedList* lst, int idx, int val) { 
+    if (idx < 0 || idx >= lst->size) {
+        return 0;
+    }
 
+    int i = 0;
+    ListNode* cur = lst->head;
+    while (i < idx) {
+        cur = cur->next;
+        i++;
+    }
+
+    cur->val = val;
+
+    return 1;
 }
 
+// size -> O(n) - O(1)
+// 并且不用add/delete都去call size函数了
 int size(MyLinkedList* lst) {
-
+    return lst->size;
 }
 
+// 如果你是读取/修改，i == idx
+// 但是如果你是想插入/删除, i == idx - 1
+// 为什么呢？因为插入/删除，都涉及到和前一个，后一个节点的交互
+// 因为单链表无法回头，所以只能在前一个就停下
 int addAtIndex(MyLinkedList* lst, int idx, int val) { 
+    if (idx < 0 || idx > lst->size) {
+        return 0;
+    }
 
+    ListNode* newNode = malloc(sizeof(ListNode));
+    if (idx == 0) {
+        newNode->next = lst->head;
+        lst->head = newNode;
+    } else if (idx == lst->size) {
+        // addLast(lst, val);
+        lst->tail->next = newNode;
+        lst->tail = newNode;
+    } else {
+        int i = 0;
+        ListNode* cur = lst->head;
+        while (i < idx - 1) {
+            cur = cur->next;
+            i++;
+        }
+        newNode->next = cur->next;
+        cur->next = newNode;
+    }
+
+    lst->size++;
+    return 1;
 }
 
 int removeAtIndex(MyLinkedList* lst, int idx) { 
+    if (idx < 0 || idx >= lst->size) {
+        return 0;
+    }
 
+    if (idx == 0) {
+        ListNode* first = lst->head;
+        lst->head = first->next;
+        free(first);
+    } else {
+        int i = 0;
+        ListNode* cur = lst->head;
+        while (i < idx - 1) {
+            cur = cur->next;
+            i++;
+        }
+
+        ListNode* toDelete = cur->next;
+        cur->next = toDelete->next;
+        free(toDelete);
+    }
+
+    lst->size--;
+    return 1;
 }
