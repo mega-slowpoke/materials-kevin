@@ -174,3 +174,79 @@ int addAtIndex(MyLinkedList* lst, int idx, int val) {
 int removeAtIndex(MyLinkedList* lst, int idx) { 
 
 }
+
+
+typedef struct myListNode {
+    int val;
+    struct myListNode* next;
+} myListNode;
+
+typedef struct {
+    myListNode* head;
+    int size;
+} MyLinkedList;
+
+
+
+static myListNode* newNode(int val) {
+    myListNode* n = (myListNode*)malloc(sizeof(myListNode));
+    n->val = val;
+    n->next = NULL;
+    return n;
+}
+
+MyLinkedList* myLinkedListCreate() {
+    MyLinkedList* lst = (MyLinkedList*)malloc(sizeof(MyLinkedList));
+    lst->head = newNode(0);
+    lst->size = 0;
+    return lst;
+}
+
+int myLinkedListGet(MyLinkedList* obj, int index) {
+    if (index < 0 || index >= obj->size) return -1;
+    myListNode* cur = obj->head->next;
+    while (index--) cur = cur->next;
+    return cur->val;
+}
+
+void myLinkedListAddAtIndex(MyLinkedList* obj, int index, int val) {
+    if (index > obj->size) return;
+    if (index < 0) index = 0;
+    myListNode* prev = obj->head;
+    for (int i=0; i < index; ++i) prev = prev->next;
+    myListNode* node = newNode(val);
+    node->next = prev->next;
+    prev->next = node;
+    obj->size++;
+}
+
+void myLinkedListAddAtHead(MyLinkedList* obj, int val) {
+    myLinkedListAddAtIndex(obj, 0, val);
+}
+
+void myLinkedListAddAtTail(MyLinkedList* obj, int val) {
+    myLinkedListAddAtIndex(obj, obj->size, val);
+}
+
+
+void myLinkedListDeleteAtIndex(MyLinkedList* obj, int index) {
+    if (index < 0 || index >= obj->size) return;
+
+    myListNode* prev = obj->head;
+    for (int i = 0; i < index; ++i) prev = prev -> next;
+
+    myListNode* del = prev->next;
+    prev->next = del->next;
+    free(del);
+    obj->size--;
+}
+
+void myLinkedListFree(MyLinkedList* obj) {
+    myListNode* cur = obj->head;
+    while (cur) {
+        myListNode* next = cur->next;
+        free(cur);
+        cur = next;
+    }
+    free(obj);
+}

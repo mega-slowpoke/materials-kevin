@@ -59,29 +59,31 @@ int main(int argc, char **argv) {
 
         else if (strcmp("class", cmd) == 0) {
             if (book == NULL) {
-                printf("No such a gradebook");
+                printf("Error: You must create or load a gradebook first\n");
             } else {
-                printf("Class name: %s\n", get_gradebook_name(book));
+                printf("%s\n", get_gradebook_name(book));
             }
         }
 
         else if (strcmp("add", cmd) == 0) {
             scanf("%s %d", name, &score);
             if (book == NULL) {
-                printf("No such a gradebook\n");
+                printf("Error: You must create or load a gradebook first\n");
+            } else if (score < 0) {
+                printf("Error: You must enter a score in the valid range (0 <= score)\n");
             } else if (add_score(book, name, score) != 0) {
-                printf("ERROR\n");
+                printf("Error: Could not add score\n");
             }
         }
 
         else if (strcmp("lookup", cmd) == 0) {
             scanf("%s", name);
             if (book == NULL) {
-                printf("No such a gradebook\n");
+                printf("Error: You must create or load a gradebook first\n");
             } else {
                 int found = find_score(book, name);
                 if (found == -1) {
-                    printf("No such a person\n");
+                    printf("No score for '%s' found\n", name);
                 } else {
                     printf("%s: %d\n", name, found);
                 }
@@ -90,41 +92,42 @@ int main(int argc, char **argv) {
 
         else if (strcmp("clear", cmd) == 0) {
             if (book == NULL) {
-                printf("No such a gradebook\n");
+                printf("Error: No gradebook to clear\n");
             } else {
                 free_gradebook(book);
                 book = NULL;
-                printf("Gradebook cleared\n");
             }
         }
 
         else if (strcmp("print", cmd) == 0) {
             if (book == NULL) {
-                printf("No such a gradebook\n");
+                printf("Error: You must create or load a gradebook first\n");
             } else {
+                printf("Scores for all students in %s:\n", get_gradebook_name(book));
                 print_gradebook(book);
             }
         }
 
         else if (strcmp("write_text", cmd) == 0) {
             if (book == NULL) {
-                printf("No such a gradebook\n");
+                printf("Error: You must create or load a gradebook first\n");
             } else if (write_gradebook_to_text(book) != 0) {
-                printf("Write gradebook failed\n");
+                printf("Failed to write gradebook to text file\n");
             } else {
-                printf("Gradebook written to file\n");
+                printf("Gradebook successfully written to %s.txt\n", get_gradebook_name(book));
             }
         }
 
         else if (strcmp("read_text", cmd) == 0) {
             scanf("%s", name);
             if (book != NULL) {
-                printf("Error: You already have a gradebook.\n");
-                printf("Use 'clear' to remove the current one first.\n");
+                printf("Error: You must clear current gradebook first\n");
             } else {
                 book = read_gradebook_from_text(name);
                 if (book == NULL) {
-                    printf("Failed to read gradebook from file.\n");
+                    printf("Failed to read gradebook from text file\n");
+                } else {
+                    printf("Gradebook loaded from text file\n");
                 }
             }
         }

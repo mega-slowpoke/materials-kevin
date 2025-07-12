@@ -34,24 +34,36 @@ const char* get_gradebook_name(const gradebook_t* book) {
     return book->class_name;
 }
 
+
 int add_score(gradebook_t* book, const char* name, int score) {
-    //if book or name doesn't exist, return false
     if (book == NULL || name == NULL) {
         return -1;
     }
-    //if the name exists, renew the score
+
     unsigned idx = hash(name);
     node_t* curr = book->buckets[idx];
-    //refer to the score, change the score
-    while (name != NULL) {
+
+    while (curr != NULL) {
         if (strcmp(curr->name, name) == 0) {
             curr->score = score;
             return 0;
         }
-        curr = curr->next; //traverse the list to find the corresponding name
+        curr = curr->next;
     }
+    
+    node_t* new_node = malloc(sizeof(node_t));
+    if (new_node == NULL) {
+        return -1;
+    }
+    strncpy(new_node->name, name, MAX_NAME_LEN - 1);
+    new_node->name[MAX_NAME_LEN - 1] = '\0';
+    new_node->score = score;
+    new_node->next = book->buckets[idx];
+    book->buckets[idx] = new_node;
+    book->size++;
     return 0;
 }
+
 
 int find_score(const gradebook_t* book, const char* name) {
     if (book == NULL || name == NULL) {
@@ -70,6 +82,7 @@ int find_score(const gradebook_t* book, const char* name) {
     return -1;
 }
 
+
 void print_gradebook(const gradebook_t *book) {
     printf("%s\n", book->class_name);
     for (int i = 0; i < NUM_BUCKETS; i++) {
@@ -80,6 +93,7 @@ void print_gradebook(const gradebook_t *book) {
         }
     }
 }
+
 
 void free_gradebook(gradebook_t *book) {
     if (book == NULL) {
