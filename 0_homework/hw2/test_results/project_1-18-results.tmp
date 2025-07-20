@@ -1,0 +1,8 @@
+=================================================================================================
+== Test 18: Add and Look Up Scores
+== Creates a new gradebook and adds a small number of scores. Then looks up each
+== of the previously added scores.
+Running test...
+Expected output is in file 'test_results/raw/project_1-18-expected.tmp'
+Actual output is in file 'test_results/raw/project_1-18-actual.tmp'
+Test PASSED

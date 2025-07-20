@@ -1,0 +1,8 @@
+=================================================================================================
+== Test 16: Add and Print Scores
+== Creates a new gradebook and adds a small number of scores before printing
+== them in alphabetical order by student name.
+Running test...
+Expected output is in file 'test_results/raw/project_1-16-expected.tmp'
+Actual output is in file 'test_results/raw/project_1-16-actual.tmp'
+Test PASSED

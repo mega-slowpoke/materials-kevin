@@ -1,0 +1,8 @@
+=================================================================================================
+== Test 5: Create a New Gradebook and Print Class Name
+== Starts the program, creates a new gradebook with the class name "CSCI2011",
+== issues a command to print out the name of the new gradebook, and exits.
+Running test...
+Expected output is in file 'test_results/raw/project_1-05-expected.tmp'
+Actual output is in file 'test_results/raw/project_1-05-actual.tmp'
+Test PASSED

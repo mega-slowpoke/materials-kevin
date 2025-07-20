@@ -1,0 +1,8 @@
+=================================================================================================
+== Test 24: Multiple Clears
+== Runs the clear command several times in a row to check that all memory is
+== properly freed and no leaks are present.
+Running test...
+Expected output is in file 'test_results/raw/project_1-24-expected.tmp'
+Actual output is in file 'test_results/raw/project_1-24-actual.tmp'
+Test PASSED
