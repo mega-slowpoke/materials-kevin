@@ -4,7 +4,8 @@
 
 const int INITIAL_SIZE = 6;
 typedef struct ArrayStack {
-    int arr[INITIAL_SIZE];
+    int *arr;
+    int capacity;
     int size;
     int nextInsertIdx;
 } ArrayStack;
@@ -12,7 +13,10 @@ typedef struct ArrayStack {
 
 // 初始化栈
 ArrayStack* createStack() {
-
+    ArrayStack* stack = (ArrayStack*)malloc(sizeof(ArrayStack));
+    stack->arr = (int*)malloc(sizeof(int) * INITIAL_SIZE);
+    stack->capacity = INITIAL_SIZE;
+    // TODO: 初始化剩下的代码
 }
 
 
