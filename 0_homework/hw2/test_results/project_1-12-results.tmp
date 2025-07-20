@@ -1,7 +1,0 @@
-=================================================================================================
-== Test 12: Invalid Add Negative
-== Starts the program and attempts to add a new student with a negative score.
-Running test...
-Expected output is in file 'test_results/raw/project_1-12-expected.tmp'
-Actual output is in file 'test_results/raw/project_1-12-actual.tmp'
-Test PASSED

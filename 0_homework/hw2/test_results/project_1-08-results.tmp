@@ -1,8 +1,0 @@
-=================================================================================================
-== Test 8: Invalid Lookup
-== Starts the program and attempt to look up a score when there is no currently
-== active gradebook, which should yield an error.
-Running test...
-Expected output is in file 'test_results/raw/project_1-08-expected.tmp'
-Actual output is in file 'test_results/raw/project_1-08-actual.tmp'
-Test PASSED

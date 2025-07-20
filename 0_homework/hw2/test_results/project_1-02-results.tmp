@@ -1,8 +1,0 @@
-=================================================================================================
-== Test 2: Start, Print, Quit
-== Starts the program, attempts a print command which should cause an error,
-== then issues the exit command which should end the program.
-Running test...
-Expected output is in file 'test_results/raw/project_1-02-expected.tmp'
-Actual output is in file 'test_results/raw/project_1-02-actual.tmp'
-Test PASSED

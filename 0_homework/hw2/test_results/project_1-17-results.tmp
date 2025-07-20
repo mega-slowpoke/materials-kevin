@@ -1,7 +1,0 @@
-=================================================================================================
-== Test 17: Add and Look Up Score
-== Creates a new gradebook and adds a single score before looking up this score.
-Running test...
-Expected output is in file 'test_results/raw/project_1-17-expected.tmp'
-Actual output is in file 'test_results/raw/project_1-17-actual.tmp'
-Test PASSED

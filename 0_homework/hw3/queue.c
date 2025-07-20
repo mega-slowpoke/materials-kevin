@@ -3,8 +3,9 @@
 
 const int INITIAL_SIZE = 6;
 typedef struct ArrayQueue {
-    int arr[INITIAL_SIZE];
-    int size;
+    int* arr;
+    int size;     // 当前元素个数
+    int capacity; // 当前arr最大的容量
     int nextInsertIdx;
     int frontIdx;
 } ArrayQueue;
@@ -12,6 +13,9 @@ typedef struct ArrayQueue {
 
 // 初始化ArrayQueue, 上面的这些字段应该怎么赋值?
 ArrayQueue* createArrayQueue() { 
+    ArrayQueue* queue = (ArrayQueue*)malloc(sizeof(ArrayQueue));
+    queue->arr = (int*)malloc(sizeof(int) * INITIAL_SIZE);
+    // TODO: 初始化剩下的字段
 }
 
 void enqueue(ArrayQueue* queue, int val) { 
@@ -21,7 +25,7 @@ void enqueue(ArrayQueue* queue, int val) {
 
     // 2.有足够大小
     queue->arr[queue->nextInsertIdx] = val;
-    queue->nextInsertIdx++;
+    queue->nextInsertIdx = (queue->nextInsertIdx + 1) % (queue->capacity);
     queue->size++;
 }
 

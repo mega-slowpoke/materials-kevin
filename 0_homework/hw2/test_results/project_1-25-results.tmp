@@ -1,7 +1,0 @@
-=================================================================================================
-== Test 25: Non-Existent Text File
-== Attempts to read from a gradebook text file that does not exist.
-Running test...
-Expected output is in file 'test_results/raw/project_1-25-expected.tmp'
-Actual output is in file 'test_results/raw/project_1-25-actual.tmp'
-Test PASSED
