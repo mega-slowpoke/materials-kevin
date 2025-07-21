@@ -11,12 +11,13 @@ typedef struct {
     int capacity;
 } arrayStack;
 
-arrayStack *createArrayStack(void) {
-    arrayStack *q = malloc(sizeof(*q));
-    q->capacity = INITIAL_SIZE;
-    q->arr = malloc(sizeof(int) * q->capacity);
-    q->size = 0;
-    q->nextInsertIdx = 0;
+arrayStack *create(void) {
+    arrayStack *stack = malloc(sizeof(*stack));
+    stack->capacity = INITIAL_SIZE;
+    stack->arr = malloc(sizeof(int) * stack->capacity);
+    stack->size = 0;
+    stack->nextInsertIdx = 0;
+    return stack;
 }
 
 void push(arrayStack *stack, int val) {
@@ -30,7 +31,6 @@ void push(arrayStack *stack, int val) {
         stack->capacity = new_capacity;
     }
     stack->arr[stack->nextInsertIdx++] = val;
-    stack->nextInsertIdx++;
     stack->size++;
 }
 

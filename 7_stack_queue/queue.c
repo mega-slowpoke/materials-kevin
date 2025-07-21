@@ -77,6 +77,7 @@ int rear(Queue* queue) {
 }
 
 int size(Queue* queue) { 
+    return queue->size;
 }
 
 
