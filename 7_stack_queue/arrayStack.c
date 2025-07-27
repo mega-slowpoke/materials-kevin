@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <string.h>
 
 int INITIAL_SIZE = 6;
+
+
 
 typedef struct {
     int *arr;
@@ -11,8 +14,12 @@ typedef struct {
     int capacity;
 } arrayStack;
 
-arrayStack *create(void) {
-    arrayStack *stack = malloc(sizeof(*stack));
+int main() {
+    arrayStack *stack = create();
+}
+arrayStack* create() {
+    // TODO: 
+    arrayStack *stack = malloc(sizeof(arrayStack));
     stack->capacity = INITIAL_SIZE;
     stack->arr = malloc(sizeof(int) * stack->capacity);
     stack->size = 0;
