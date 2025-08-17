@@ -14,9 +14,7 @@ typedef struct {
     int capacity;
 } arrayStack;
 
-int main() {
-    arrayStack *stack = create();
-}
+
 arrayStack* create() {
     // TODO: 
     arrayStack *stack = malloc(sizeof(arrayStack));
@@ -26,6 +24,10 @@ arrayStack* create() {
     stack->nextInsertIdx = 0;
     return stack;
 }
+
+
+
+
 
 void push(arrayStack *stack, int val) {
     if (stack->nextInsertIdx >= stack->capacity) {

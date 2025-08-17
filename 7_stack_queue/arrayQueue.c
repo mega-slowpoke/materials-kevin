@@ -28,13 +28,11 @@ void enqueue(arrayQueue* q, int val) {
     if (q->nextInsertIdx >= q->capacity) {
         int new_capacity = q->capacity*2;
         int* new_arr = malloc(sizeof(int) * new_capacity);
-         // TODO: 
         memcpy(new_arr, q->arr, sizeof(int) * q->capacity); 
         free(q->arr);
         q->arr = new_arr;
         q->capacity = new_capacity;
     }
-     // TODO: 
     q->arr[q->nextInsertIdx] = val;
     q->nextInsertIdx = (q->nextInsertIdx + 1) % q->capacity;
     q->size++;
