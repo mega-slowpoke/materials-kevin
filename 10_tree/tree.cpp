@@ -1,11 +1,13 @@
 
 class TreeNode {
 private:
+   
+public:
+
     TreeNode* left;
     TreeNode* right;
     int value;  
 
-public:
     TreeNode(int value) {
         this->value = value;
         left = right = nullptr;
