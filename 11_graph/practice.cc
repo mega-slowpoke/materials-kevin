@@ -89,4 +89,33 @@ public:
     //     // 下
     //     dfs(visited, x+1, y, grid);
     // }
+
+
+    bool isBipartite(vector<vector<int>>& graph) {
+        int n = graph.size();
+        vector<int> color(n, -1); // -1 = 未染色, 0 = 红, 1 = 蓝
+
+        for (int start = 0; start < n; ++start) {
+            if (color[start] != -1) continue; // 已经染色过了
+
+            deque<int> q;
+            q.push_back(start);
+            color[start] = 0; // 给起点染成红色
+
+            while (!q.empty()) {
+                int cur = q.front(); 
+                q.pop_front();
+                for (int next : graph[cur]) {
+                    if (color[next] == -1) {
+                        color[next] = 1 - color[cur]; // 相反颜色
+                        q.push_back(next);
+                    } else if (color[next] == color[cur]) {
+                        return false; // 相邻的颜色相同 -> 不是二分图
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
 };
